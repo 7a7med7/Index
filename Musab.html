@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساحتي الشخصية | الريادة في الرياضيات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0 10px;
+            font-weight: 700;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--accent);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .about-text {
+            margin-bottom: 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .info-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-left: 10px;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .calculator {
+            margin-top: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--success);
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .skill {
+            background-color: #e9ecef;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .math-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.4);
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                </h1>
+             مصعب عبد المنعم يوسف محمد</h1>
+                <p class="title">مطور ويب </p>
+                <div class="social-links">
+                    
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <section class="section" id="about">
+                <h2>من أنا؟</h2>
+                <div class="about-text">
+                    <p>مرحبا انا مصعب ،مطور ويب متخصص وخبير في الرياضيات التطبيقية. لدي شغف كبير بدمج التقنية مع الرياضيات لإنشاء أدوات تعليمية تفاعلية تساعد الطلاب والمهتمين بالرياضيات.</p>
+                    <p>أعمل حاليًا على تطوير منصة تعليمية للرياضيات تقدم تجربة تعلم ممتعة وفعالة للطلاب من جميع المستويات.</p>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>جمهورية مصر العربيه</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon"><i class="fas fa-envelope"></i></span>
+                        <span>musab@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon"><i class="fas fa-phone"></i></span>
+                        <span>+20 11 28369221</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span>ماجستير هندسة برمجيات</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 25px;">مهاراتي</h3>
+                <div class="skills">
+                    <span class="skill">HTML/CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">الرياضيات المتقدمة</span>
+                    <span class="skill">تحليل البيانات</span>
+                    <span class="skill">التعلم الآلي</span>
+                </div>
+            </section>
+            
+            <section class="section" id="math-tools">
+                <div style="text-align: center;">
+                    <div class="math-icon">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <h2>أدواتي الرياضية</h2>
+                    <p>استخدم هذه الأدوات للحسابات الرياضية السريعة والدقيقة</p>
+                </div>
+                
+                <div class="calculator">
+                    <h3>حساب الجذر التربيعي</h3>
+                    <div class="input-group">
+                        <label for="sqrt-input">أدخل الرقم:</label>
+                        <input type="number" id="sqrt-input" placeholder="مثال: 25">
+                    </div>
+                    <button onclick="calculateSquareRoot()">
+                        <i class="fas fa-calculator"></i> احسب الجذر
+                    </button>
+                    <div class="result" id="sqrt-result"></div>
+                </div>
+                
+                <div class="calculator" style="margin-top: 30px;">
+                    <h3>حساب نصف قطر الدائرة</h3>
+                    <div class="input-group">
+                        <label for="area-input">أدخل مساحة الدائرة:</label>
+                        <input type="number" id="area-input" placeholder="مثال: 78.54">
+                    </div>
+                    <button onclick="calculateRadius()">
+                        <i class="fas fa-circle"></i> احسب نصف القطر
+                    </button>
+                    <div class="result" id="radius-result"></div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            
+         شكرا علي حسن المشاهده والتصفح زميلكم مصعب
+        </footer>
+    </div>
+    
+    <div class="floating-btn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // بيانات الملف الشخصي (يمكن تعديلها)
+        const profileData = {
+            name: "أحمد محمد",
+            job: "مطور ويب | خبير رياضيات",
+            location: "الرياض، المملكة العربية السعودية",
+            email: "ahmed@example.com",
+            phone: "+966 50 123 4567",
+            education: "ماجستير في الرياضيات التطبيقية",
+            about: [
+                "مرحبًا! أنا أحمد، مطور ويب متخصص وخبير في الرياضيات التطبيقية. لدي شغف كبير بدمج التقنية مع الرياضيات لإنشاء أدوات تعليمية تفاعلية تساعد الطلاب والمهتمين بالرياضيات.",
+                "أعمل حاليًا على تطوير منصة تعليمية للرياضيات تقدم تجربة تعلم ممتعة وفعالة للطلاب من جميع المستويات."
+            ],
+            skills: ["HTML/CSS", "JavaScript", "Python", "الرياضيات المتقدمة", "تحليل البيانات", "التعلم الآلي"]
+        };
+        
+        // تعبئة البيانات عند تحميل الصفحة
+        window.onload = function() {
+            document.getElementById('profile-name').textContent = profileData.name;
+            document.querySelector('.title').textContent = profileData.job;
+        };
+        
+        // دالة حساب الجذر التربيعي
+        function calculateSquareRoot() {
+            const input = document.getElementById('sqrt-input');
+            const resultDiv = document.getElementById('sqrt-result');
+            
+            if (!input.value) {
+                showResult(resultDiv, "الرجاء إدخال رقم", false);
+                return;
+            }
+            
+            const number = parseFloat(input.value);
+            
+            if (number < 0) {
+                showResult(resultDiv, "لا يوجد جذر حقيقي للأعداد السالبة", false);
+                return;
+            }
+            
+            const sqrt = Math.sqrt(number);
+            showResult(resultDiv, `الجذر التربيعي لـ <strong>${number}</strong> هو <strong>${sqrt.toFixed(4)}</strong>`);
+        }
+        
+        // دالة حساب نصف قطر الدائرة
+        function calculateRadius() {
+            const input = document.getElementById('area-input');
+            const resultDiv = document.getElementById('radius-result');
+            
+            if (!input.value) {
+                showResult(resultDiv, "الرجاء إدخال مساحة الدائرة", false);
+                return;
+            }
+            
+            const area = parseFloat(input.value);
+            
+            if (area <= 0) {
+                showResult(resultDiv, "المساحة يجب أن تكون أكبر من الصفر", false);
+                return;
+            }
+            
+            const radius = Math.sqrt(area / Math.PI);
+            showResult(resultDiv, `نصف قطر الدائرة بمساحة <strong>${area}</strong> هو <strong>${radius.toFixed(4)}</strong>`);
+        }
+        
+        // دالة لعرض النتائج
+        function showResult(element, message, isSuccess = true) {
+            element.innerHTML = message;
+            element.style.display = "block";
+            element.style.borderLeftColor = isSuccess ? "#4cc9f0" : "#f72585";
+        }
+        
+        // دالة للتمرير إلى الأعلى
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // إظهار/إخفاء زر التمرير للأعلى
+        window.onscroll = function() {
+            const btn = document.querySelector('.floating-btn');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "flex";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>
