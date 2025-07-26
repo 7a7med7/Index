@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>صفحة تسجيل الدخول للموقع</title>
+  <script>
+    function welcome(){
+      alert ("تم تسجيل الدخول بنجاح");
+    }
+      
+  </script>
+  </head>
+  <body bgcolor="black" text="white">
+     
+    <div style="text-align: center;"><h1>صفحة تسجيل الدخول</h1></div>
+    <hr>
+    <hr>
+  <div style="text-align: center;"><img src="6.jpg" height="200" width="200"></div>
+  <div style="text-align: center;"><form>
+  <br><input type="text" name="username" placeholder="username" required>اسم المستخدم
+  <br> <input type="number" name="input" placeholder="number" required>رقم الهاتف
+  <br> <input type="password" name="password" placeholder="password" required>كلمة السر
+  <br> <input type="radio" name="gender" value="male">ذكر
+    <input type="radio" name="gender" value="female">انثى
+   <br><select>
+     <option selected="sudan">السودان</option>
+   <option value="usa">الولايات المتحده</option>
+   <option value="eygpt">مصر</option>
+   <option value="uae">الامارات</option>
+   <option value="ksa">السعودية</option>
+   <option value="uk">المملكه المتحدة</option>
+  
+   </select>
+   <br><input type="checkbox" name="agreement" value="yes">هل انت موافق على شروط الاستخدام
+    <br> <input type="button" name="b1" onclick="welcome()" value="login">
+    
+     </form></div>
+    </div>
+  </body>
+</html>
